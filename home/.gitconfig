@@ -1,0 +1,10 @@
+[github]
+	user = ckolderup
+[core]
+	editor = vim
+[user]
+	name = Casey Kolderup
+	email = casey@kolderup.org
+[alias]
+	unstage = reset HEAD --
+	last = log -1 HEAD
