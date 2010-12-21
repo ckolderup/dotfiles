@@ -1,3 +1,5 @@
+set t_Co=256
+colorscheme molokai
 set backspace=indent,eol,start
 set tabstop=2
 set hidden
@@ -28,6 +30,11 @@ endif
 
 let mapleader = ","
 nmap <leader>v :tabedit $MYVIMRC<CR>
+
+if &term == "screen"
+  set t_kN=^[[6;*~
+  set t_kP=^[[5;*~
+endif
 
 vmap <D-j> gj
 vmap <D-k> gk
