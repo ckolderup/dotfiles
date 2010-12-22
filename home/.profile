@@ -1,5 +1,3 @@
-export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
-set -o vi
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -8,3 +6,6 @@ if [ -n "$BASH_VERSION" ]; then
     . ~/.bashrc
   fi
 fi
+
+SSH_ENV="$HOME/.ssh/environment"
+

@@ -2,6 +2,7 @@
 	user = ckolderup
 [core]
 	editor = vim
+	excludesfile = /Users/casey/.gitignore
 [user]
 	name = Casey Kolderup
 	email = casey@kolderup.org

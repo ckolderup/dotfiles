@@ -1,3 +1,4 @@
+set ruler
 set backspace=indent,eol,start
 set tabstop=2
 set hidden
@@ -5,6 +6,8 @@ set smartindent
 set expandtab
 set shiftwidth=2
 filetype indent on
+filetype plugin on
+syntax on
 
 set incsearch
 set hlsearch
@@ -39,3 +42,5 @@ nmap <D-k> gk
 nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
+
+colorscheme molokai
