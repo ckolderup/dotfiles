@@ -1,4 +1,5 @@
-export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/bin/flex_sdk_3.5/bin:$PATH
+export TERM=xterm-256color
+export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/bin/flex_sdk_3.5/bin:/Library/Ruby/Gems/1.8/bin:$PATH
 export EDITOR=vim
 
 alias git=hub
