@@ -8,7 +8,7 @@ set guioptions-=l
 set guioptions-=L
 set bg=dark
 colorscheme molokai
-set guifont=Envy\ Code\ R\ 14
+set guifont=Envy_Code_R:h14
 syntax enable
 
 " set up tab labels with tab number, buffer name, number of windows

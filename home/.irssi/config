@@ -1,38 +1,85 @@
 servers = (
   {
-    address = "zhaymusic.com";
-    chatnet = "r0x0rz";
-    port = "5557";
-    use_ssl = "yes";
-    ssl_verify = "no";
-  },
-  {
-    address = "irc.r0x0rz.net";
+    address = "orzhova.r0x0rz.net";
     chatnet = "freenode";
     port = "5557";
+    username = "zbfreenode";
+    password = "";
     use_ssl = "yes";
     ssl_verify = "no";
+    autoconnect = "yes";
+  },
+
+  {
+    address = "r0x0rz.net";
+    chatnet = "r0x0rz";
+    port = "5557";
+    username = "zbr0x0rz";
+    password = "";
+    use_ssl = "yes";
+    ssl_verify = "no";
+    autoconnect = "yes";
   }
 );
 
 chatnets = {
-  r0x0rz = {
+  IRCNet = {
     type = "IRC";
-    nick = "zorkboy";
-    username = "zbr0x0rz";
-    realname = "zb0k";
+    max_kicks = "4";
+    max_modes = "3";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
   };
+  EFNet = { 
+    type = "IRC";
+    max_kicks = "4";
+    max_modes = "4";
+    max_msgs = "3";
+  };
+  Undernet = {
+    type = "IRC";
+    max_kicks = "4";
+    max_modes = "3";
+    max_msgs = "3";
+  };
+  DALNet = { 
+    type = "IRC";
+    max_kicks = "4";
+    max_modes = "6";
+    max_msgs = "3";
+  };
+  OPN = { type = "IRC"; max_kicks = "4"; max_modes = "4"; max_msgs = "1"; };
+  GIMPNet = {
+    type = "IRC";
+    max_kicks = "4";
+    max_modes = "4";
+    max_msgs = "3";
+  };
+  PTLink = {
+    type = "IRC";
+    max_kicks = "1";
+    max_modes = "6";
+    max_msgs = "100";
+  };
+  SILC = { type = "SILC"; };
+  irc = { type = "IRC"; autosendcmd = "/msg nickserv identify"; };
   freenode = {
     type = "IRC";
     nick = "ckolderup";
     username = "zbfreenode";
-    realname = "Casey";
+    autosendcmd = "/msg nickserv identify";
   };
+  r0x0rz = { type = "IRC"; };
 };
 
 channels = (
-  { name = "#fds"; chatnet = "r0x0rz"; },
-  { name = "#tumblrs"; chatnet = "freenode"; }
+  { name = "#misc"; chatnet = "irc"; autojoin = "Yes"; },
+  { name = "#flame"; chatnet = "irc"; autojoin = "Yes"; },
+  { name = "#work"; chatnet = "irc"; autojoin = "Yes"; },
+  { name = "#training"; chatnet = "irc"; autojoin = "Yes"; },
+
+  { name = "#tumblrs"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -70,54 +117,45 @@ aliases = {
   UMODE = "mode $N";
   WC = "window close";
   WN = "window new hide";
+  SV = "say Irssi $J ($V) - http://irssi.org/";
   GOTO = "sb goto";
   CHAT = "dcc chat";
   RUN = "SCRIPT LOAD";
-  CALC = "exec - if command -v bc >/dev/null 2>&1\\; then printf '%s=' '$*'\\; echo '$*' | bc -l\\; else echo bc was not found\\; fi";
   SBAR = "STATUSBAR";
   INVITELIST = "mode $C +I";
-  Q = "QUERY";
-  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
-  EXEMPTLIST = "mode $C +e";
-  ATAG = "WINDOW SERVER";
-  UNSET = "set -clear";
-  RESET = "set -default";
 };
 
 statusbar = {
   # formats:
-  # when using {templates}, the template is shown only if it's argument isn't
+  # when using {templates}, the template is shown only if its argument isnt
   # empty unless no argument is given. for example {sb} is printed always,
-  # but {sb $T} is printed only if $T isn't empty.
+  # but {sb $T} is printed only if $T isnt empty.
 
   items = {
     # start/end text in statusbars
     barstart = "{sbstart}";
     barend = "{sbend}";
 
-    topicbarstart = "{topicsbstart}";
-    topicbarend = "{topicsbend}";
-
     # treated "normally", you could change the time/user name to whatever
-    time = "{sb $Z}";
-    user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+    time = "";
+    user = "{sb $cumode$N{sbmode $usermode}{sbaway $A}}";
 
     # treated specially .. window is printed with non-empty windows,
     # window_empty is printed with empty windows
-    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window = "{sb $winref:$T{sbmode $M}}";
     window_empty = "{sb $winref{sbservertag $tag}}";
-    prompt = "{prompt $[.15]itemname}";
+    prompt = "{prompt $[.15]T}";
     prompt_empty = "{prompt $winname}";
     topic = " $topic";
-    topic_empty = " Irssi v$J - http://www.irssi.org";
+    topic_empty = " Irssi v$J - http://irssi.org/help/";
 
-    # all of these treated specially, they're only displayed when needed
+    # all of these treated specially, theyre only displayed when needed
     lag = "{sb Lag: $0-}";
     act = "{sb Act: $0-}";
     more = "-- more --";
   };
 
-  # there's two type of statusbars. root statusbars are either at the top
+  # theres two type of statusbars. root statusbars are either at the top
   # of the screen or at the bottom of the screen. window statusbars are at
   # the top/bottom of each split window in screen.
   default = {
@@ -164,7 +202,7 @@ statusbar = {
       };
     };
 
-    # we treat input line as yet another statusbar :) It's possible to
+    # we treat input line as yet another statusbar :) Its possible to
     # add other items before or after the input line item.
     prompt = {
       type = "root";
@@ -187,19 +225,106 @@ statusbar = {
       position = "1";
       visible = "always";
       items = {
-        topicbarstart = { priority = "100"; };
+        barstart = { priority = "100"; };
         topic = { };
         topic_empty = { };
-        topicbarend = { priority = "100"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
       };
     };
   };
 };
 settings = {
   core = {
-    real_name = "Casey Kolderup";
-    user_name = "casey";
-    nick = "casey";
+    real_name = "ckolderup";
+    user_name = "ckolderup";
+    nick = "ckolderup";
+
   };
-  "fe-common/core" = { theme = "inky"; };
+  "fe-common/core" = {
+    autolog = "no";
+    autolog_path = "~/irclogs/$tag/$0-%m%y.log";
+    show_nickmode_empty = "yes";
+    theme = "ckolderup.theme";
+    hilight_color = "%G";
+  };
+  "fe-text" = {
+    colors = "yes";
+    autostick_split_windows = "yes";
+    paste_verify_line_count = "1";
+    actlist_sort = "refnum";
+  };
+  "perl/core/scripts" = {
+    twitter_poll_interval = "150";
+    twirssi_use_reply_aliases = "yes";
+  };
+};
+logs = { };
+ignores = ( );
+keyboard = (
+  { key = "meta-1"; id = "change_window"; data = "1"; },
+  { key = "meta-2"; id = "change_window"; data = "2"; },
+  { key = "meta-3"; id = "change_window"; data = "3"; },
+  { key = "meta-4"; id = "change_window"; data = "4"; },
+  { key = "meta-5"; id = "change_window"; data = "5"; },
+  { key = "meta-6"; id = "change_window"; data = "6"; },
+  { key = "meta-7"; id = "change_window"; data = "7"; },
+  { key = "meta-8"; id = "change_window"; data = "8"; },
+  { key = "meta-9"; id = "change_window"; data = "9"; },
+  { key = "meta-0"; id = "change_window"; data = "10"; }
+);
+
+hilights = (
+  { text = "ckolderup"; nick = "yes"; word = "yes"; },
+  { text = "casey"; nick = "yes"; word = "yes"; }
+);
+windows = {
+  1 = {
+    immortal = "yes";
+    name = "console";
+    level = "ALL";
+    sticky = "yes";
+    parent = "5";
+  };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#geekmafia";
+        tag = "r0x0rz";
+      }
+    );
+    sticky = "yes";
+    parent = "5";
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#fds";
+        tag = "r0x0rz";
+      }
+    );
+    sticky = "yes";
+    parent = "5";
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#tumblrs";
+        tag = "freenode";
+      }
+    );
+    sticky = "yes";
+    parent = "5";
+  };
+  5 = { name = "twitter"; sticky = "yes"; };
+  99 = { name = "hilight"; sticky = "yes"; };
+};
+mainwindows = {
+  5 = { first_line = "8"; lines = "31"; };
+  99 = { first_line = "1"; lines = "7"; };
 };

@@ -1,5 +1,5 @@
 export TERM=xterm-256color
-export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:/usr/local/sbin:$PATH
 
 # Happy prompt, thanks milkie!
 FG='\[\033[38;5;119m\]'
