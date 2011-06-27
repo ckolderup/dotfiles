@@ -35,4 +35,3 @@ begin
 rescue LoadError => err
   warn "Couldn't load Wirble: #{err}"
 end
-

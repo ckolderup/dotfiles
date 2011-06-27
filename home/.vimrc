@@ -3,6 +3,8 @@ call pathogen#runtime_append_all_bundles()
 set ruler
 set t_Co=256
 set background=dark
+set ruler
+set t_Co=256
 colorscheme molokai
 set backspace=indent,eol,start
 set tabstop=2
