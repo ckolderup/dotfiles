@@ -1,5 +1,8 @@
+call pathogen#runtime_append_all_bundles() 
+
 set ruler
 set t_Co=256
+set background=dark
 colorscheme molokai
 set backspace=indent,eol,start
 set tabstop=2
@@ -49,3 +52,5 @@ nmap <D-k> gk
 nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
+
+nmap <F2> :!/Applications/Shoes.app/Contents/MacOS/shoes %:p<CR>
