@@ -14,9 +14,9 @@ export PATH=~/bin:~/local/bin:$PATH
 
   if [ $TERM = 'ansi' -o $TERM = 'vt100' -o $TERM = 'xterm-256color' -o $TERM = 'linux' -o $TERM = 'xterm' -o $TERM = 'screen-256color' ]
   then
-    PS1="$FG\W$BBLK\$(parse_git_branch):$NONE "
+    PS1="$FG\H$BBLK:$FG\W$BBLK\$(parse_git_branch):$NONE "
   else
-    PS1="\W\$(parse_git_branch): "
+    PS1="(\H) \W\$(parse_git_branch): "
   fi
   export PS1
 
@@ -37,6 +37,12 @@ if [ `uname` == "Darwin" ]; then
   export LSCOLORS="fxCxexdxFxbxegedabagacad"
 else
   alias ls='ls --color=auto'
+fi
+
+# less syntax highlighting
+if command -v src-hilite-lesspipe.sh > /dev/null ; then
+  export LESSOPEN="| $(which src-hilite-lesspipe.sh) %s"
+  export LESS=' -R '
 fi
 
 # cosmetic nonsense
