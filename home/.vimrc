@@ -1,3 +1,4 @@
+call pathogen#helptags()
 call pathogen#runtime_append_all_bundles() 
 
 set ruler
@@ -22,8 +23,12 @@ set wildmenu
 set wildmode=list:full
 set smartcase
 
+imap jj <Esc>
 nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <leader>n :silent :nohlsearch<CR>
+nmap <silent> <leader>t :CommandT<CR>
+nmap <silent> <leader>b :CommandTBuffer<CR>
+
 set listchars=tab:>-,trail:·,eol:$
 set showbreak=.
 

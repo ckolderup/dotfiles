@@ -7,8 +7,20 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 set bg=dark
+
+if has("gui_macvim")
+  set transparency=5
+  
+  macmenu &File.New\ Tab key=<nop>
+  map <D-t> :CommandT<CR>
+
+  macmenu &File.New\ Window key=<nop>
+  map <D-n> :!mvim<CR><CR>
+endif
+
+
 colorscheme molokai
-set guifont=Envy_Code_R:h14
+set guifont=Envy_Code_R:h15
 syntax enable
 
 " set up tab labels with tab number, buffer name, number of windows
@@ -84,8 +96,3 @@ endfunction
 
 set guitablabel=%{GuiTabLabel()}
 set guitabtooltip=%{GuiTabToolTip()} 
-
-if has("gui_macvim")
-  macmenu &File.New\ Tab key=<nop>
-  map <D-t> :CommandT<CR>
-endif

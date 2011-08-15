@@ -1,5 +1,5 @@
 export LANG=en_US.utf-8
-export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:/usr/local/sbin:$PATH
+export PATH=~/bin:~/local/bin:$PATH
 
 #prompt config
   function parse_git_branch {
@@ -14,17 +14,11 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:/usr/local/sbin:$PA
 
   if [ $TERM = 'ansi' -o $TERM = 'vt100' -o $TERM = 'xterm-256color' -o $TERM = 'linux' -o $TERM = 'xterm' -o $TERM = 'screen-256color' ]
   then
-    PS1="$FG\H$BBLK\$(parse_git_branch):$NONE "
+    PS1="$FG\W$BBLK\$(parse_git_branch):$NONE "
   else
-    PS1="\H\$(parse_git_branch): "
+    PS1="\W\$(parse_git_branch): "
   fi
   export PS1
-
-#EC2 stuff
-source ~/.ec2/env.sh
-
-#rack fun
-export RACK_ENV="development"
 
 #bash editor prefs
 set -b
@@ -35,12 +29,11 @@ export EDITOR=vim
 alias mine="ps efu"
 alias wd='echo -e "   \033[1;30m"`pwd`"\033[0m"'
 alias grep="grep --exclude=*.swp"
-
+alias lack="ack --pager='less -R'"
 if [ `uname` == "Darwin" ]; then
   alias ls='ls -G'
   alias mvim="~/bin/mvim.sh -f"
   alias quicklook='qlmanage -p 2>/dev/null' # thanks mwunsch!
-  alias git=hub
   export LSCOLORS="fxCxexdxFxbxegedabagacad"
 else
   alias ls='ls --color=auto'
