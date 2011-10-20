@@ -1,3 +1,5 @@
-home/.irssi/
 home/.profile
 home/.vim/.netrwhist
+home/.irssi/config
+home/.irssi/fnotify
+home/.irssi/*.log
