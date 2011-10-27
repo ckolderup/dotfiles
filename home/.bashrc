@@ -1,6 +1,12 @@
 export LANG=en_US.utf-8
 export PATH=~/bin:~/local/bin:$PATH
 
+# git niftiness
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWSTASHSTATE=1
+#export GIT_PS1_SHOWDIRTYSTATE=1 #these are too slow
+#export GIT_PS1_SHOWUPSTREAM="auto"
+
 #prompt config
   function parse_git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
@@ -14,9 +20,10 @@ export PATH=~/bin:~/local/bin:$PATH
 
   if [ $TERM = 'ansi' -o $TERM = 'vt100' -o $TERM = 'xterm-256color' -o $TERM = 'linux' -o $TERM = 'xterm' -o $TERM = 'screen-256color' ]
   then
-    PS1="$FG\H$BBLK:$FG\W$BBLK\$(parse_git_branch):$NONE "
+    #PS1="$FG\h$BBLK:$FG\W$BBLK\$(parse_git_branch):$NONE "
+    PS1="$FG\h$BBLK:$FG\W$BBLK\$(__git_ps1 \" (%s)\"):$NONE "
   else
-    PS1="(\H) \W\$(parse_git_branch): "
+    PS1="(\h) \W\$(parse_git_branch): "
   fi
   export PS1
 

@@ -21,6 +21,7 @@ set incsearch
 set hlsearch
 set wildmenu
 set wildmode=list:full
+set wildignore+=*.o,*.obj,*.class,*.jar
 set smartcase
 
 imap jj <Esc>
@@ -61,3 +62,4 @@ nmap <D-6> g^
 nmap <D-0> g^
 
 nmap <F2> :!/Applications/Shoes.app/Contents/MacOS/shoes %:p<CR>
+nnoremap <leader>f :Ack 

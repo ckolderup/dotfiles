@@ -10,6 +10,15 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	lg = log --graph --pretty=format:'%C(magenta bold)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr) %C(magenta bold)<%an>%Creset' --abbrev-commit --date=relative
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  unstage = reset HEAD --
+  last = log -1 HEAD
 [color]
 	diff = auto
 	status = auto
