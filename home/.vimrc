@@ -41,6 +41,9 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
+"json is javascript, so, uh, just use that
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
 let mapleader = ","
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
@@ -61,3 +64,5 @@ nmap <D-6> g^
 nmap <D-0> g^
 
 nmap <F2> :!/Applications/Shoes.app/Contents/MacOS/shoes %:p<CR>
+
+nnoremap <leader>f :Ack 
