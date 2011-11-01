@@ -2,6 +2,7 @@ begin
   require 'irb/completion'
   require 'rubygems'
   require 'wirble'
+  require 'awesome_print'
   Wirble.init
   colors = Wirble::Colorize.colors.merge({
     :open_hash  => :light_gray,
@@ -28,6 +29,20 @@ begin
   })
   Wirble::Colorize.colors = colors
   Wirble.colorize
+
+  unless IRB.version.include?('DietRB')
+    IRB::Irb.class_eval do
+      def output_value
+        ap @context.last_value
+      end
+    end
+  else #MacRuby
+    IRB.formatter = Class.new(IRB::Formatter) do
+      def inspect_object(object)
+        object.ai
+      end
+    end.new
+  end
 
   IRB.conf[:USE_READLINE] = true
   IRB.conf[:PROMPT_MODE] = :SIMPLE
