@@ -1,5 +1,5 @@
 call pathogen#helptags()
-call pathogen#runtime_append_all_bundles() 
+call pathogen#infect()
 
 set ruler
 set t_Co=256
@@ -26,7 +26,7 @@ set smartcase
 
 imap jj <Esc>
 nmap <silent> <leader>s :set nolist!<CR>
-nmap <silent> <leader>n :silent :nohlsearch<CR>
+nmap <silent> <Space> :silent nohlsearch<CR>
 nmap <silent> <leader>t :CommandT<CR>
 nmap <silent> <leader>b :CommandTBuffer<CR>
 
@@ -66,3 +66,17 @@ nmap <D-0> g^
 
 nmap <F2> :!/Applications/Shoes.app/Contents/MacOS/shoes %:p<CR>
 nnoremap <leader>f :Ack 
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+run SyntasticEnable ruby
+run SyntasticEnable javascript
+run SyntasticEnable coffee
+run SyntasticEnable haml
+run SyntasticEnable perl
+run SyntasticEnable python
+run SyntasticEnable sass
+run SyntasticEnable sh
