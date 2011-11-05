@@ -1,5 +1,6 @@
 export LANG=en_US.utf-8
 export PATH=~/bin:~/local/bin:$PATH
+source ~/bin/git-completion.bash
 
 # git niftiness
 export GIT_PS1_SHOWUNTRACKEDFILES=1
