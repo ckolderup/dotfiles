@@ -79,7 +79,7 @@ abstracts = {
   channel = "%_$*%_";
 
   # nick is printed
-  nick = "%_$*%_";
+  nick = "$*";
 
   # nick host is printed
   nickhost = "[$*]";

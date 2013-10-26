@@ -20,7 +20,7 @@ endif
 
 
 colorscheme molokai
-set guifont=Envy_Code_R:h15
+set guifont=PragmataPro:h16
 syntax enable
 
 " set up tab labels with tab number, buffer name, number of windows

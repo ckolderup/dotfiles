@@ -33,13 +33,13 @@ set -o vi
 export EDITOR=vim
 
 #tools
+alias curl="curl -w '\n'"
 alias mine="ps efu"
 alias wd='echo -e "   \033[1;30m"`pwd`"\033[0m"'
 alias grep="grep --exclude=*.swp"
 alias lack="ack --pager='less -R'"
 if [ `uname` == "Darwin" ]; then
   alias ls='ls -G'
-  alias mvim="~/bin/mvim.sh -f"
   alias quicklook='qlmanage -p 2>/dev/null' # thanks mwunsch!
   export LSCOLORS="fxCxexdxFxbxegedabagacad"
 else
@@ -62,6 +62,9 @@ cd() {
   else
     builtin cd "$@"
   fi
+  if ls .git &> /dev/null; then
+    echo -e "   \033[1;34m"`~/bin/spark-git.rb . `"\033[0m"
+  fi
   echo -e "   \033[1;30m"`pwd`"\033[0m"
 }
 
@@ -72,3 +75,13 @@ cd() {
 
 # view remote man pages from man.cx using w3m as the "pager"
 woman() { if [ $# -eq 2 ]; then w3m "http://man.cx/$2($1)"; else w3m "http://man.cx/$1"; fi; }
+
+function fnd() { CMD="*"; for ARG in $*; do CMD=$CMD$ARG"*"; done; find . -name "$CMD"; }
+function fless() { CMD="*"; for ARG in $*; do CMD=$CMD$ARG"*"; done; less `find . -name "$CMD"`; }
+function vless() { CMD="*"; for ARG in $*; do CMD=$CMD$ARG"*"; done; vim `find . -name "$CMD"`; }
+
+#print recent git activity in common git directories
+alias recent='echo -e "\033[1;31m"`ruby ~/bin/spark-git.rb ~/src/*`"\033[0m"'
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

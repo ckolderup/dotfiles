@@ -4,8 +4,6 @@ call pathogen#infect()
 set ruler
 set t_Co=256
 set background=dark
-set ruler
-set t_Co=256
 colorscheme molokai
 set backspace=indent,eol,start
 set tabstop=2
@@ -30,10 +28,14 @@ nmap <silent> <Space> :silent nohlsearch<CR>
 nmap <silent> <leader>t :CommandT<CR>
 nmap <silent> <leader>b :CommandTBuffer<CR>
 
-set listchars=tab:>-,trail:·,eol:$
+set list
+set listchars=trail:·
 set showbreak=.
 
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)]
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'short'
 
 set numberwidth=5
 set number
@@ -44,8 +46,10 @@ endif
 
 "json is javascript, so, uh, just use that
 autocmd BufNewFile,BufRead *.json set ft=javascript
+"same with Gemfile always being ruby
+autocmd BufNewFile,BufRead Gemfile set ft=ruby
 
-let mapleader = ","
+"let mapleader = ","
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
 if &term == "screen"
@@ -64,19 +68,15 @@ nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
 
-nmap <F2> :!/Applications/Shoes.app/Contents/MacOS/shoes %:p<CR>
+nmap <silent> <F2> :!/Applications/Shoes.app/Contents/MacOS/shoes %:p<CR><CR>
+nmap <silent> <F3> :!/Applications/love.app/Contents/MacOS/love %:p:h<CR><CR>
 nnoremap <leader>f :Ack 
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-run SyntasticEnable ruby
-run SyntasticEnable javascript
-run SyntasticEnable coffee
-run SyntasticEnable haml
-run SyntasticEnable perl
-run SyntasticEnable python
-run SyntasticEnable sass
-run SyntasticEnable sh
+let g:CommandTAcceptSelectionMap='<CR>'
+let g:CommandTAcceptSelectionTabMap='<C-CR>'
+
+if has('persistent_undo')
+  set undofile "so is persistent undo ...
+  set undolevels=1000 "maximum changes to undone
+  set undoreload=10000 "maximum number lines to save
+endif
