@@ -1,6 +1,6 @@
 servers = (
   {
-    address = "circumlocution.ath.cx";
+    address = "ajani.lethar.gy";
     username = "ckfreenode";
     password = "%%FREENODEZNCPASS%%";
     chatnet = "freenode";
@@ -11,7 +11,7 @@ servers = (
   },
 
   {
-    address = "circumlocution.ath.cx";
+    address = "ajani.lethar.gy";
     username = "ckroxorz";
     password = "%%ROXORZZNCPASS%%";
     chatnet = "r0x0rz";
@@ -22,7 +22,7 @@ servers = (
   },
 
   {
-    address = "circumlocution.ath.cx";
+    address = "ajani.lethar.gy";
     username = "ckdal";
     password = "%%DALZNCPASS%%";
     chatnet = "dal";

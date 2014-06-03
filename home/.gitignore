@@ -3,3 +3,10 @@
 **tmp/*
 .rbenv-version
 *.un~
+target/
+lib_managed/
+src_managed/
+project/boot/
+.history
+.cache
+node_modules

@@ -25,8 +25,8 @@ set smartcase
 imap jj <Esc>
 nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <Space> :silent nohlsearch<CR>
-nmap <silent> <leader>t :CommandT<CR>
-nmap <silent> <leader>b :CommandTBuffer<CR>
+nmap <silent> <leader>t :CtrlP<CR>
+nmap <silent> <leader>b :CtrlPBuffer<CR>
 
 set list
 set listchars=trail:·
@@ -72,11 +72,10 @@ nmap <silent> <F2> :!/Applications/Shoes.app/Contents/MacOS/shoes %:p<CR><CR>
 nmap <silent> <F3> :!/Applications/love.app/Contents/MacOS/love %:p:h<CR><CR>
 nnoremap <leader>f :Ack 
 
-let g:CommandTAcceptSelectionMap='<CR>'
-let g:CommandTAcceptSelectionTabMap='<C-CR>'
-
 if has('persistent_undo')
   set undofile "so is persistent undo ...
   set undolevels=1000 "maximum changes to undone
   set undoreload=10000 "maximum number lines to save
 endif
+
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.

@@ -3,6 +3,7 @@
 [core]
 	editor = vim
 	excludesfile = /Users/casey/.gitignore
+	autocrlf = input
 [user]
 	name = Casey Kolderup
 	email = casey@kolderup.org
@@ -19,6 +20,7 @@
   dump = cat-file -p
   unstage = reset HEAD --
   last = log -1 HEAD
+	cool = "!git log --format=%s | while read line; do echo \"A cool thing to do is $line\"; done"
 [color]
 	diff = auto
 	status = auto

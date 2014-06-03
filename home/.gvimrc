@@ -12,7 +12,7 @@ if has("gui_macvim")
   set transparency=5
   
   macmenu &File.New\ Tab key=<nop>
-  map <D-t> :CommandT<CR>
+  map <D-t> :CtrlP<CR>
 
   macmenu &File.New\ Window key=<nop>
   map <D-n> :!mvim<CR><CR>

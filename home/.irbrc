@@ -50,3 +50,12 @@ begin
 rescue LoadError => err
   warn "Couldn't load Wirble: #{err}"
 end
+
+# Output irb history to named file
+  def dumphist(path)
+    File.open(path, 'w') do |file|
+      Readline::HISTORY.each do |line|
+          file.puts line
+      end
+    end
+  end
